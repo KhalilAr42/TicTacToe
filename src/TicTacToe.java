@@ -46,7 +46,7 @@ public class TicTacToe {
                             if (grid.checkPositions(row, column) == 1) {
                                 char symbol = round % 2 == 0 ? 'X' : 'O';
                                 grid.fillPosition(row, column, symbol);
-                                System.out.println(grid);
+                                System.out.println("\n"+grid);
                                 String result = Solver.getWinnger(grid.getGrid(), Board.SIZE, Board.SIZE);
                                 if (result != "Game Not Finished") {
                                     System.out.println("\n Game is finished, the result is : " + result + "\n");
