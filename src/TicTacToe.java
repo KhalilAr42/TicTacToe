@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class TicTacToe {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         Board grid = new Board();
-        Solver solver = new Solver();
         boolean showMenu = true;
         int choice = -1;
-        
-        System.out.println("Hello and welcome to Tic Tac Toe :");
+
+        System.out.println("\n\tHello and welcome to Tic Tac Toe :");
 
         while (showMenu) {
 
@@ -35,9 +35,8 @@ public class TicTacToe {
 
                     System.out.println("\nThis is the Initial state of the board : \n");
                     System.out.println(grid);
-            
+
                     while (gameNotFinished) {
-                        
                         System.out.println("\nPlease enter the coordinate of your play:");
                         String userPlay = scanner.nextLine();
                         if (userPlay.length() < 4 && userPlay.matches("[\\d\\s]+")) {
@@ -47,7 +46,7 @@ public class TicTacToe {
                                 char symbol = round % 2 == 0 ? 'X' : 'O';
                                 grid.fillPosition(row, column, symbol);
                                 System.out.println(grid);
-                                String result = solver.getWinnger(grid.getGrid(), Board.SIZE, Board.SIZE);
+                                String result = Solver.getWinnger(grid.getGrid(), Board.SIZE, Board.SIZE);
                                 if (result != "Game Not Finished") {
                                     System.out.println("\n Game is finished, the result is : " + result + "\n");
                                     gameNotFinished = false;

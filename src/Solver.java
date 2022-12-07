@@ -4,6 +4,7 @@ public class Solver {
         int countX = 0;
         int countO = 0;
 
+        // Count Number of X and O in the board
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 if (grid[i][j] == 'X') {
@@ -17,6 +18,7 @@ public class Solver {
         boolean winnerIsX = false;
         boolean winnerIsO = false;
 
+        // Check all the possible wins by either X or O
         for (int i = 0; i < rows; i++) {
 
             int row = 0;
@@ -31,6 +33,7 @@ public class Solver {
                 antiDiagonal += grid[j][2 - j];
             }
 
+            // Because 'X' ASCII Code is 88 and 'O' ASCII Code is 79
             winnerIsX = winnerIsX || row == 264 || column == 264 || diagonal == 264 || antiDiagonal == 264;
             winnerIsO = winnerIsO || row == 237 || column == 237 || diagonal == 237 || antiDiagonal == 237;
 

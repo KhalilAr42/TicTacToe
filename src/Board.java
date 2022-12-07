@@ -50,9 +50,12 @@ public class Board {
     }
 
     public int checkPositions(int row, int column) {
-        if (row > 3 || column > 3 || row <= 0 || column <= 0) {
+        // Check if the user input is correct
+        boolean isOutOfBounds = row > SIZE || column > SIZE || row <= 0 || column <= 0;
+        boolean isFull = grid[row - 1][column - 1] != '_';
+        if (isOutOfBounds) {
             return -1;
-        } else if (grid[row - 1][column - 1] != '_') {
+        } else if (isFull) {
             return -2;
         }
         return 1;
