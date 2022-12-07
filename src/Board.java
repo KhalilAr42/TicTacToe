@@ -1,6 +1,6 @@
 public class Board {
 
-    private static final int SIZE = 3;
+    public static final int SIZE = 3;
     private char[][] grid = new char[SIZE][SIZE];
 
     public char[][] getGrid() {
