@@ -9,6 +9,9 @@ public class Board {
 
     public Board() {
         grid = new char[SIZE][SIZE];
+    }
+
+    public void InitializeGrid(){
         // Initialize the array with the character '_' as empty tile
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {

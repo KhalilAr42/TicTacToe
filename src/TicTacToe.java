@@ -30,6 +30,7 @@ public class TicTacToe {
 
             switch (choice) {
                 case 1:
+                    grid.InitializeGrid();
                     boolean gameNotFinished = true;
                     int round = 0;
 
