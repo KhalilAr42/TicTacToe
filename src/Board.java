@@ -1,6 +1,6 @@
 public class Board {
 
-    private static final  int SIZE = 3;
+    private static final int SIZE = 3;
     private char[][] grid = new char[SIZE][SIZE];
 
     public char[][] getGrid() {
@@ -33,9 +33,8 @@ public class Board {
         return boardToString;
     }
 
-    
     public void printInstruction() {
-        
+
         System.out.println("\nTo play Tic Tac Toe you have to enter the coordinates of your play");
         System.out.println("The following figure represent the coordinates of each position in the board");
         System.out.print("\n");
@@ -47,21 +46,20 @@ public class Board {
         System.out.print("\n");
         System.out.println("X always start first, good luck and enjoy your game !");
         System.out.print("\n");
-        
+
     }
-    
+
     public int checkPositions(int row, int column) {
-    if (row > 3 || column > 3 || row <= 0 || column <= 0) {
+        if (row > 3 || column > 3 || row <= 0 || column <= 0) {
             return -1;
         } else if (grid[row - 1][column - 1] != '_') {
             return -2;
         }
         return 1;
     }
-    
+
     public void fillPosition(int row, int column, char symbol) {
         grid[row - 1][column - 1] = symbol;
     }
-    
-    
+
 }
