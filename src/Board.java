@@ -53,19 +53,33 @@ public class Board {
     }
 
     public int checkPositions(int row, int column) {
-        // Check if the user input is correct
+        
         boolean isOutOfBounds = row > SIZE || column > SIZE || row <= 0 || column <= 0;
-        boolean isFull = grid[row - 1][column - 1] != '_';
         if (isOutOfBounds) {
             return -1;
-        } else if (isFull) {
+        }
+        
+        boolean isFull = grid[row - 1][column - 1] != '_';
+        if (isFull) {
             return -2;
         }
+
         return 1;
     }
 
+    
     public void fillPosition(int row, int column, char symbol) {
         grid[row - 1][column - 1] = symbol;
     }
-
+    
+    public void fillGrid(String gameState){
+        int k = 0;
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                char symbol = gameState.split(" ")[k].charAt(0);
+                grid[i][j] = symbol;
+                k += 1;
+            }
+        }
+    } 
 }

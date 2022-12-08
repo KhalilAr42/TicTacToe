@@ -4,7 +4,7 @@ public class TicTacToe {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Board grid = new Board();
+        Board board = new Board();
         boolean showMenu = true;
         int choice = -1;
 
@@ -13,9 +13,10 @@ public class TicTacToe {
         while (showMenu) {
 
             System.out.println("===================================================");
-            System.out.println("\t1. Play a game of Tic Tac Toe");
+            System.out.println("\t1. Play a game of Tic Tac Toe with a friend");
             System.out.println("\t2. Check the game instructions");
-            System.out.println("\t3. Quit the game");
+            System.out.println("\t3. Get the game result");
+            System.out.println("\t4. Quit the game");
             System.out.println("===================================================");
             System.out.println("\nPlease enter the your choice : ");
 
@@ -30,12 +31,12 @@ public class TicTacToe {
 
             switch (choice) {
                 case 1:
-                    grid.InitializeGrid();
+                    board.InitializeGrid();
                     boolean gameNotFinished = true;
                     int round = 0;
 
                     System.out.println("\nThis is the Initial state of the board : \n");
-                    System.out.println(grid);
+                    System.out.println(board);
 
                     while (gameNotFinished) {
                         System.out.println("\nPlease enter the coordinate of your play:");
@@ -43,17 +44,17 @@ public class TicTacToe {
                         if (userPlay.length() < 4 && userPlay.matches("[\\d\\s]+")) {
                             int row = Integer.parseInt(userPlay.split(" ")[0]);
                             int column = Integer.parseInt(userPlay.split(" ")[1]);
-                            if (grid.checkPositions(row, column) == 1) {
+                            if (board.checkPositions(row, column) == 1) {
                                 char symbol = round % 2 == 0 ? 'X' : 'O';
-                                grid.fillPosition(row, column, symbol);
-                                System.out.println("\n"+grid);
-                                String result = Solver.getWinnger(grid.getGrid(), Board.SIZE, Board.SIZE);
+                                board.fillPosition(row, column, symbol);
+                                System.out.println("\n"+board);
+                                String result = Solver.getWinner(board.getGrid(), Board.SIZE, Board.SIZE);
                                 if (result != "Game Not Finished") {
                                     System.out.println("\n Game is finished, the result is : " + result + "\n");
                                     gameNotFinished = false;
                                 }
                                 round++;
-                            } else if (grid.checkPositions(row, column) == -1) {
+                            } else if (board.checkPositions(row, column) == -1) {
                                 System.out.println("Coordinates should be from 1 to 3!");
                             } else {
                                 System.out.println("This cell is occupied! Choose another one!");
@@ -65,10 +66,21 @@ public class TicTacToe {
                     break;
 
                 case 2:
-                    grid.printInstruction();
+                    board.printInstruction();
+                    break;
+                
+                case 3:
+                    board.InitializeGrid();
+                    System.out.println("\nPlease enter the state of your game in one line seperated with spaces:");
+                    String gameState = scanner.nextLine();
+                    System.out.println("\nThe game you entered looks like this : \n");
+                    board.fillGrid(gameState);
+                    System.out.println(board);
+                    String result = Solver.getWinner(board.getGrid(), Board.SIZE, Board.SIZE);
+                    System.out.println("\nThe result of this game is : " + result + "\n");
                     break;
 
-                case 3: 
+                case 4: 
                     System.out.println("\nThank you for playing, See you soon\n");
                     showMenu = false;
                     break;

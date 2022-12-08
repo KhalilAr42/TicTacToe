@@ -1,6 +1,6 @@
 public class Solver {
 
-    public static String getWinnger(char[][] grid, int rows, int columns) {
+    public static String getWinner(char[][] grid, int rows, int columns) {
         int countX = 0;
         int countO = 0;
 
