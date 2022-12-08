@@ -77,7 +77,7 @@ public class TicTacToe {
                     board.fillGrid(gameState);
                     System.out.println(board);
                     String result = Solver.getWinner(board.getGrid(), Board.SIZE, Board.SIZE);
-                    System.out.println("\nThe result of this game is : " + result + "\n");
+                    System.out.println("\nThe result of this game state is : " + result + "\n");
                     break;
 
                 case 4: 

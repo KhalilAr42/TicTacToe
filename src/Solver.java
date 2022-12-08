@@ -45,7 +45,7 @@ public class Solver {
                 : winnerIsX ? "X wins"
                         : winnerIsO ? "O wins"
                                 : countX + countO == 9 ? "Draw"
-                                        : "Game Not Finished";
+                                        : "Game is Not Finished";
 
         return result;
 
