@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+
 public class Board {
 
     public static final int SIZE = 3;
@@ -11,7 +15,7 @@ public class Board {
         grid = new char[SIZE][SIZE];
     }
 
-    public void InitializeGrid(){
+    public void InitializeGrid() {
         // Initialize the array with the character '_' as empty tile
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
@@ -53,12 +57,12 @@ public class Board {
     }
 
     public int checkPositions(int row, int column) {
-        
+
         boolean isOutOfBounds = row > SIZE || column > SIZE || row <= 0 || column <= 0;
         if (isOutOfBounds) {
             return -1;
         }
-        
+
         boolean isFull = grid[row - 1][column - 1] != '_';
         if (isFull) {
             return -2;
@@ -67,12 +71,38 @@ public class Board {
         return 1;
     }
 
-    
     public void fillPosition(int row, int column, char symbol) {
         grid[row - 1][column - 1] = symbol;
     }
-    
-    public void fillGrid(String gameState){
+
+    public ArrayList<ArrayList<Integer>> getFreePosition() {
+        ArrayList<ArrayList<Integer>> freePositions = new ArrayList<>();
+        int row = 0;
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (grid[i][j] == '_') {
+                    freePositions.add(row, new ArrayList<>(Arrays.asList(i, j)));
+                    row++;
+                }
+            }
+        }
+        return freePositions;
+    }
+
+    public int[] getRandomPositionfromFreePositions(ArrayList<ArrayList<Integer>> freePositions) {
+        Random random = new Random();
+
+        int size = freePositions.size();
+        int randomFreePosition = random.nextInt(size);
+        int[] randomPosition = new int[2];
+
+        randomPosition[0] = freePositions.get(randomFreePosition).get(0);
+        randomPosition[1] = freePositions.get(randomFreePosition).get(1);
+
+        return randomPosition;
+    }
+
+    public void fillGrid(String gameState) {
         int k = 0;
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
@@ -81,5 +111,6 @@ public class Board {
                 k += 1;
             }
         }
-    } 
+    }
+
 }
