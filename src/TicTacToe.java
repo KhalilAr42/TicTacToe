@@ -14,14 +14,14 @@ public class TicTacToe {
         while (showMenu) {
 
             System.out.println("===================================================");
-            System.out.println("\t1. Play a game of Tic Tac Toe with a friend");
-            System.out.println("\t2. Play a game of Tic Tac Toe vs the computer");
-            System.out.println("\t3. Check the game instructions");
-            System.out.println("\t4. Get the game result");
+            System.out.println("\t1. Check the game instructions");
+            System.out.println("\t2. Play a game of Tic Tac Toe with a friend");
+            System.out.println("\t3. Play a game of Tic Tac Toe vs the computer");
+            System.out.println("\t4. Get the result of a given game");
             System.out.println("\t5. Quit the game");
             System.out.println("===================================================");
             System.out.println("\nPlease enter the your choice : ");
-
+            
             try {
                 choice = scanner.nextInt();
             } catch (Exception InputMismatchException) {
@@ -33,9 +33,13 @@ public class TicTacToe {
             
             boolean gameNotFinished;
             int round;
-
+            
             switch (choice) {
                 case 1:
+                board.printInstruction();
+                break;
+                
+                case 2:
                     board.InitializeGrid();
                     gameNotFinished = true;
                     round = 0;
@@ -69,7 +73,7 @@ public class TicTacToe {
                     }
                     break;
 
-                case 2:
+                case 3:
                     board.InitializeGrid();
                     gameNotFinished = true;
                     round = 0;
@@ -122,9 +126,6 @@ public class TicTacToe {
                     } 
                     break;
 
-                case 3:
-                board.printInstruction();
-                break;
 
                 case 4:
                     board.InitializeGrid();
